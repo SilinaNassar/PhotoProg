@@ -1,0 +1,42 @@
+﻿@model Picture
+@{
+    ViewData["title"] = "Details";
+}
+
+<h1>Details</h1>
+<div class="row">
+    <div class="col-md-4">
+        <img src="~/img/@Model.FileName" class="img-responsive center-block" width="350" height="250" />
+    </div>
+
+    <div class="col-md-8">
+        <h2>@Model.FileName</h2>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td>PictureId:</td>
+                <td>@Model.PictureID</td>
+            </tr>
+
+            <tr>
+                <td>Picture Name:</td>
+                <td>@Model.PictureName</td>
+            </tr>
+
+
+            <tr>
+                <td>Picture Date:</td>
+                <td>@Model.When.ToShortDateString()</td>
+            </tr>
+
+
+            <tr>
+                <td>Picture Location:</td>
+                <td>@Model.Location</td>
+            </tr>
+        </table>
+
+        <a asp-action="Edit" asp-route-id="@Model.PictureID">Edit</a>
+        <a asp-action="Index">Back</a>
+
+    </div>
+</div>

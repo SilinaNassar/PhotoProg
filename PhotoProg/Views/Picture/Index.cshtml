@@ -1,0 +1,44 @@
+﻿@model List<Picture>
+@{
+    ViewData["title"] = "Index";
+}
+
+<h1>Index</h1>
+<div class="mb-2">
+    <a asp-controller="Picture" asp-action="Create">Add New Picture</a>
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Picture</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var pic in Model){
+            <tr>
+                <td>
+                    <img src="~/img/@pic.FileName" class="img-thumbnail" width=100>
+                </td>
+                <td>
+                    @pic.PictureName
+                </td>
+                <td>
+                    @pic.When
+                </td>
+                <td>
+                    @pic.Location
+                </td>
+                <td>
+                    <a asp-controller="Picture" asp-action="Edit" asp-route-id ="@pic.PictureID">Edit</a> |
+                    <a asp-controller="Picture" asp-action="Details" asp-route-id="@pic.PictureID">Details</a> |
+                    <a asp-controller="Picture" asp-action="Delete" asp-route-id="@pic.PictureID">Delete</a> |
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
